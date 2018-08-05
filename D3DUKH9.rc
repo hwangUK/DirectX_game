@@ -1,0 +1,223 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// í•œêµ­ì–´(ëŒ€í•œë¯¼êµ­) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_D3DUKH9             ICON                    "D3DUKH9.ico"
+
+IDI_SMALL               ICON                    "small.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDC_D3DUKH9 MENU
+BEGIN
+    POPUP "ï¿½ï¿½ï¿½ï¿½(&F)"
+    BEGIN
+        MENUITEM "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(&X)",               IDM_EXIT
+    END
+    POPUP "ï¿½ï¿½ï¿½ï¿½(&H)"
+    BEGIN
+        MENUITEM "ï¿½ï¿½ï¿½ï¿½(&A)...",               IDM_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDC_D3DUKH9 ACCELERATORS
+BEGIN
+    "?",            IDM_ABOUT,              ASCII,  ALT
+    "/",            IDM_ABOUT,              ASCII,  ALT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "D3DUKH9 ï¿½ï¿½ï¿½ï¿½"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+    LTEXT           "D3DUKH9, ï¿½ï¿½ï¿½ï¿½ 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2018",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "È®ï¿½ï¿½",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_DIALOG1 DIALOGEX 0, 0, 309, 266
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "CUSTOM SETTING"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "¿Ï·á ÈÄ µ¹¾Æ°¡±â",IDCANCEL,230,245,72,14
+    EDITTEXT        IDC_EDIT2,59,34,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,119,35,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,181,35,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT5,59,74,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT6,118,74,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT7,181,74,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT8,60,92,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT9,117,92,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT10,181,92,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT11,59,108,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT12,117,108,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT13,181,108,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT14,59,124,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT15,117,124,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT16,181,124,43,13,ES_AUTOHSCROLL
+    LTEXT           "Material_RGB",IDC_STATIC1,110,16,48,15,NOT WS_GROUP
+    LTEXT           "Light_RGB",IDC_STATIC2,117,56,37,15,NOT WS_GROUP
+    LTEXT           "Diffuse",IDC_STATIC3,14,74,30,15,NOT WS_GROUP
+    LTEXT           "Ambient",IDC_STATIC4,14,90,30,15,NOT WS_GROUP
+    LTEXT           "Specular",IDC_STATIC5,14,106,30,15,NOT WS_GROUP
+    LTEXT           "Direction",IDC_STATIC6,14,121,30,15,NOT WS_GROUP
+    PUSHBUTTON      "Àû¿ë",IDC_BUTTON1,240,37,50,14
+    PUSHBUTTON      "Àû¿ë",IDC_BUTTON2,240,108,50,14
+    CONTROL         "",IDC_SPIN1,"msctls_updown32",UDS_ARROWKEYS,49,34,11,14
+    CONTROL         "",IDC_SPIN2,"msctls_updown32",UDS_ARROWKEYS,108,34,11,14
+    CONTROL         "",IDC_SPIN3,"msctls_updown32",UDS_ARROWKEYS,170,34,11,14
+    LTEXT           "Shadow",IDC_STATIC7,14,153,41,8
+    CONTROL         "",IDC_SPIN4,"msctls_updown32",UDS_ARROWKEYS,49,73,11,14
+    CONTROL         "",IDC_SPIN5,"msctls_updown32",UDS_ARROWKEYS,108,73,12,14
+    CONTROL         "",IDC_SPIN6,"msctls_updown32",UDS_ARROWKEYS,171,73,12,14
+    CONTROL         "",IDC_SPIN7,"msctls_updown32",UDS_ARROWKEYS,49,90,11,14
+    CONTROL         "",IDC_SPIN8,"msctls_updown32",UDS_ARROWKEYS,108,91,12,14
+    CONTROL         "",IDC_SPIN9,"msctls_updown32",UDS_ARROWKEYS,171,91,12,14
+    CONTROL         "",IDC_SPIN10,"msctls_updown32",UDS_ARROWKEYS,48,107,11,14
+    CONTROL         "",IDC_SPIN11,"msctls_updown32",UDS_ARROWKEYS,107,107,12,14
+    CONTROL         "",IDC_SPIN12,"msctls_updown32",UDS_ARROWKEYS,170,107,12,14
+    CONTROL         "",IDC_SPIN13,"msctls_updown32",UDS_ARROWKEYS,48,123,11,14
+    CONTROL         "",IDC_SPIN14,"msctls_updown32",UDS_ARROWKEYS,107,123,12,14
+    CONTROL         "",IDC_SPIN15,"msctls_updown32",UDS_ARROWKEYS,170,123,12,14
+    CONTROL         "On/Off",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,52,153,39,10
+    LTEXT           "SelectModel",IDC_STATIC8,122,186,47,8
+    COMBOBOX        IDC_COMBO1,79,199,134,50,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT17,61,226,43,13,ES_AUTOHSCROLL
+    LTEXT           "Size",IDC_STATIC9,18,227,30,15,NOT WS_GROUP
+    CONTROL         "",IDC_SPIN16,"msctls_updown32",UDS_ARROWKEYS,49,225,11,14
+    PUSHBUTTON      "Àû¿ë",IDC_BUTTON3,109,225,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 259
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_APP_TITLE           "D3DUKH9"
+    IDC_D3DUKH9             "D3DUKH9"
+END
+
+#endif    // í•œêµ­ì–´(ëŒ€í•œë¯¼êµ­) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
