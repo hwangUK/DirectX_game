@@ -25,8 +25,7 @@ private:
 	LPD3DXMESH m_pBulletMesh;
 
 	D3DXVECTOR3 m_vBulletPos;
-	D3DXVECTOR3 m_vTargetPos;
-	int m_life = 0;
+	int m_Bulletlife = 0;
 
 public:	
 	void OnInit(LPDIRECT3DDEVICE9 D3Ddevice);
@@ -38,8 +37,8 @@ public:
 	void Fire(int index, float speed);
 	void RenderFire();
 
-	void SetLife(int life);
-	int GetLife();	
+	void SetBulletLife(int life);
+	int GetBulletLife();
 	
 	void SetBulletPos(D3DXVECTOR3 vbulletpos);
 	float m_BulletRadius;

@@ -1,0 +1,37 @@
+﻿  D3DUKH9.cpp
+D3DUKH9.cpp(267): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(269): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(271): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(278): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(280): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(282): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(285): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(287): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(289): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(292): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(294): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(296): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(299): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(301): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(303): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(310): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D3DUKH9.cpp(343): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Figure.cpp
+  Game.cpp
+Game.cpp(402): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+Game.cpp(409): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+Game.cpp(416): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+Game.cpp(423): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+  OBJ_ACTOR.cpp
+  stdafx.cpp
+LINK : warning C4727: 타임스탬프가 동일한 h:\programingexe\vs_hd\d3dukh9\release\d3dukh9.pch PCH가 h:\programingexe\vs_hd\d3dukh9\release\customtimer.obj 및 h:\programingexe\vs_hd\d3dukh9\release\camera.obj에 있습니다.  첫 번째 PCH를 사용합니다.
+LINK : warning C4727: 타임스탬프가 동일한 h:\programingexe\vs_hd\d3dukh9\release\d3dukh9.pch PCH가 h:\programingexe\vs_hd\d3dukh9\release\d3dapp.obj 및 h:\programingexe\vs_hd\d3dukh9\release\camera.obj에 있습니다.  첫 번째 PCH를 사용합니다.
+LINK : warning C4727: 타임스탬프가 동일한 h:\programingexe\vs_hd\d3dukh9\release\d3dukh9.pch PCH가 h:\programingexe\vs_hd\d3dukh9\release\game.obj 및 h:\programingexe\vs_hd\d3dukh9\release\figure.obj에 있습니다.  첫 번째 PCH를 사용합니다.
+LINK : warning C4727: 타임스탬프가 동일한 h:\programingexe\vs_hd\d3dukh9\release\d3dukh9.pch PCH가 h:\programingexe\vs_hd\d3dukh9\release\sound.obj 및 h:\programingexe\vs_hd\d3dukh9\release\obj_ground.obj에 있습니다.  첫 번째 PCH를 사용합니다.
+  코드를 생성하고 있습니다.
+  44 of 130 functions (33.8%) were compiled, the rest were copied from previous compilation.
+    5 functions were new in current compilation
+    12 functions had inline decision re-evaluated but remain unchanged
+  코드를 생성했습니다.
+  D3DUKH9.vcxproj -> H:\ProgramingEXE\VS_HD\D3DUKH9\Release\D3DUKH9.exe
+  D3DUKH9.vcxproj -> H:\ProgramingEXE\VS_HD\D3DUKH9\Release\D3DUKH9.pdb (Full PDB)

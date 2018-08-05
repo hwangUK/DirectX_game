@@ -9,111 +9,114 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\cpp">
+    <Filter Include="소스 파일\FrameWork">
       <UniqueIdentifier>{d9f27acf-3a72-44c5-b3f8-53fdc1a4d3c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainGame">
+      <UniqueIdentifier>{689b531e-5a64-4843-a1ea-b066cbe32a33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object">
+      <UniqueIdentifier>{96e13c33-e5a0-4d68-a29d-cdecefe52ab9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Objec_Player">
+      <UniqueIdentifier>{4243765e-b8c1-4058-88a4-3ced583313f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Axis.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="CustomizeScene.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="CustomTimer.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="D3DApp.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="D3DUKH9.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="Figure.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelLoader.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="OBJ_ACTOR.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="OBJ_Cube.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="OBJ_Ground.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>소스 파일\cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DApp.h">
+      <Filter>소스 파일\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DUKH9.h">
+      <Filter>소스 파일\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>소스 파일\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomTimer.h">
+      <Filter>소스 파일\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>소스 파일\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Axis.h">
+      <Filter>소스 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Figure.h">
+      <Filter>소스 파일\Objec_Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelLoader.h">
+      <Filter>소스 파일\Objec_Player</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJ_ACTOR.h">
+      <Filter>소스 파일\Objec_Player</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJ_Cube.h">
+      <Filter>소스 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJ_Ground.h">
+      <Filter>소스 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>소스 파일\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>소스 파일\MainGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Axis.cpp">
-      <Filter>소스 파일\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>소스 파일\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="CustomizeScene.cpp">
-      <Filter>소스 파일\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="CustomTimer.cpp">
-      <Filter>소스 파일\cpp</Filter>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="D3DApp.cpp">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일\FrameWork</Filter>
     </ClCompile>
     <ClCompile Include="D3DUKH9.cpp">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일\FrameWork</Filter>
     </ClCompile>
-    <ClCompile Include="Figure.cpp">
-      <Filter>소스 파일\cpp</Filter>
+    <ClCompile Include="Camera.cpp">
+      <Filter>소스 파일\MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomTimer.cpp">
+      <Filter>소스 파일\MainGame</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일\MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Axis.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Figure.cpp">
+      <Filter>소스 파일\Objec_Player</Filter>
     </ClCompile>
     <ClCompile Include="ModelLoader.cpp">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일\Objec_Player</Filter>
     </ClCompile>
     <ClCompile Include="OBJ_ACTOR.cpp">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일\Objec_Player</Filter>
     </ClCompile>
     <ClCompile Include="OBJ_Cube.cpp">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일\Object</Filter>
     </ClCompile>
     <ClCompile Include="OBJ_Ground.cpp">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일\Object</Filter>
     </ClCompile>
     <ClCompile Include="Sound.cpp">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일\MainGame</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>소스 파일\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>소스 파일\cpp</Filter>
+      <Filter>소스 파일\MainGame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

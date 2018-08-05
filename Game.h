@@ -1,6 +1,5 @@
 #pragma once
 #include <d3dx9math.h>
-
 #include "D3DApp.h"
 #include "Sound.h"
 #include "Camera.h"
@@ -25,7 +24,6 @@ private:
 	CustomTimer m_Timer;
 	Camera m_Camera;	
 	Sprite m_sprite01;	
-
 	//FONT & FPS	
 	LPD3DXFONT m_pFont[5];
 	LPD3DXFONT m_pfFPS;
@@ -35,10 +33,10 @@ private:
 
 	//CUSTOM OBJECT
 	OBJ_ACTOR m_player;
-	OBJ_ACTOR m_Target_VerticalLEFT[1000];
-	OBJ_ACTOR m_Target_VerticalRIGHT[1000];
-	OBJ_ACTOR m_Target_HorizontalUP[1000];
-	OBJ_ACTOR m_Target_HorizontalDOWN[1000];
+	OBJ_ACTOR m_Target_VerticalLEFT[600];
+	OBJ_ACTOR m_Target_VerticalRIGHT[600];
+	OBJ_ACTOR m_Target_HorizontalUP[600];
+	OBJ_ACTOR m_Target_HorizontalDOWN[600];	
 	int m_TargetIndex[4];
 	D3DXVECTOR3 m_vStartPos;
 	Sound sound;
@@ -59,11 +57,12 @@ private:
 	void SetDrawingText(int fontSizeIndex, LPWSTR str, D3DXCOLOR color, int leftRect, int uprect, int rightRect, int downRect);
 
 public:
-	//Dialog 창으로 로드와 세팅을 하기 위한 공개함수
+	//Dialog 창으로 로드와 세팅을 하기 위한 공개변수
 	D3DMATERIAL9 m_Material;
 	D3DLIGHT9 m_Light;
 
 public:
+	//Dialog 창으로 로드와 세팅을 하기 위한 공개함수
 	void SetMaterial(float r, float g, float b);
 	D3DCOLORVALUE GetMaterial();	
 	void SetDirectionalLight();

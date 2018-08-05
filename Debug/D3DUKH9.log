@@ -1,17 +1,8 @@
-﻿  건너뛰고 있습니다... (관련된 변경 내용 없음)
-  Sprite.cpp
-  Sound.cpp
-  OBJ_Ground.cpp
-  OBJ_Cube.cpp
-  OBJ_ACTOR.cpp
-  ModelLoader.cpp
-  Game.cpp
-  Figure.cpp
-  D3DUKH9.cpp
-  D3DApp.cpp
-  CustomizeScene.cpp
-  CustomTimer.cpp
-  Camera.cpp
-  Axis.cpp
+﻿  Game.cpp
+h:\programingexe\vs_hd\d3dukh9\game.cpp(402): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+h:\programingexe\vs_hd\d3dukh9\game.cpp(409): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+h:\programingexe\vs_hd\d3dukh9\game.cpp(416): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+h:\programingexe\vs_hd\d3dukh9\game.cpp(423): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+  stdafx.cpp
   D3DUKH9.vcxproj -> H:\ProgramingEXE\VS_HD\D3DUKH9\Debug\D3DUKH9.exe
   D3DUKH9.vcxproj -> H:\ProgramingEXE\VS_HD\D3DUKH9\Debug\D3DUKH9.pdb (Partial PDB)

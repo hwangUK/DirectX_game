@@ -3,11 +3,10 @@
 
 void Figure::OnInit(LPDIRECT3DDEVICE9 D3Ddevice){
 	m_pD3Ddevice = D3Ddevice;
-
+	m_Bulletlife = 1;
 	//VERTEX BUFFER
 	CUSTOMVERTEX2 Vertices[12] =
-	{
-		
+	{		
 		{ D3DXVECTOR3(-1.0f,0.0f,1.0f),D3DXVECTOR3(0.0f,0.0f,0.0f) },
 		{ D3DXVECTOR3(1.0f,0.0f,1.0f), D3DXVECTOR3(0.0f,0.0f,0.0f) },
 		{ D3DXVECTOR3(0.0f,0.0f,-1.0f),D3DXVECTOR3(0.0f,0.0f,0.0f) },
@@ -150,18 +149,16 @@ void Figure::InitMakeFire(float Radius, float Scale) {
 }
 
 void Figure::Fire(int index, float speed){
-	if (GetLife() > 0) {
+
 		if (index == 0 ) m_vBulletPos.z += speed;	
-		else if (index == 1) m_vBulletPos.x -= speed;	
-		else if (index == 2) m_vBulletPos.z += speed / 2;
+		else if (index == 1) m_vBulletPos.z += speed / 2;
+		else if (index == 2) m_vBulletPos.x -= speed;		 		
 		else if (index == 3) m_vBulletPos.x -= speed / 2;
-		D3DXMatrixScaling(&m_matScaleFire, m_BulletScale, m_BulletScale, m_BulletScale);
-		D3DXMatrixTranslation(&m_matTranslateFire, m_vBulletPos.x, m_vBulletPos.y, m_vBulletPos.z);
-	}	
+		D3DXMatrixScaling(&m_matScaleFire, m_BulletScale, m_BulletScale - 1.0f , m_BulletScale);
+		D3DXMatrixTranslation(&m_matTranslateFire, m_vBulletPos.x, m_vBulletPos.y, m_vBulletPos.z);		
 }
 
 void Figure::RenderFire(){
-	if (GetLife() > 0) {
 		D3DXMATRIX world;
 		world = m_matScaleFire * m_matTranslateFire;
 		m_pD3Ddevice->SetRenderState(D3DRS_LIGHTING, FALSE);		
@@ -169,7 +166,6 @@ void Figure::RenderFire(){
 		m_pD3Ddevice->SetFVF(D3DFVF_XYZ | D3DFVF_DIFFUSE);
 		m_pD3Ddevice->SetTransform(D3DTS_WORLD, &world);
 		m_pBulletMesh->DrawSubset(0);
-	}
 }
 
 void Figure::SetBulletPos(D3DXVECTOR3 vbulletpos){
@@ -181,9 +177,9 @@ D3DXVECTOR3 Figure::GetBulletPos(){
 	return m_vBulletPos;
 }
 
-void Figure::SetLife(int life){
-	m_life = life;
+void Figure::SetBulletLife(int life){
+	m_Bulletlife = life;
 }
-int Figure::GetLife(){
-	return m_life;
+int Figure::GetBulletLife(){
+	return m_Bulletlife;
 }

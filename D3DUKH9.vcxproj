@@ -162,7 +162,6 @@
   <ItemGroup>
     <ClInclude Include="Axis.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CustomizeScene.h" />
     <ClInclude Include="CustomTimer.h" />
     <ClInclude Include="D3DApp.h" />
     <ClInclude Include="D3DUKH9.h" />
@@ -181,7 +180,6 @@
   <ItemGroup>
     <ClCompile Include="Axis.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CustomizeScene.cpp" />
     <ClCompile Include="CustomTimer.cpp" />
     <ClCompile Include="D3DApp.cpp" />
     <ClCompile Include="D3DUKH9.cpp" />

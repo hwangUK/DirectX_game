@@ -33,8 +33,6 @@ private:
 	LPD3DXMESH m_mesh;	
 	ModelLoader m_modelLoder; 
 
-	//Helper = SubObject
-	Figure m_Helper[4];
 	float m_fSubObjScale;
 	D3DXVECTOR3 m_vSubObjPos[4];
 	D3DXVECTOR3 m_fSubObjRotation;
@@ -55,11 +53,16 @@ private:
 	void SetCycleRotationX(float Radius, float Speed, double theta);
 	void SetCycleRotationY(float Radius, float Speed, double theta);
 	void SetCycleRotationZ(float Radius, float Speed, double theta);	
-	
+
+	void BulletFire(int i);
+
 public:
 	CHK_MODEL CHECKMODEL = DEFAULT;
-	BOOL FireOn[4] = { FALSE };
+	Figure m_Helper[4];
+	BOOL bFireOn[4] = { FALSE };
+	BOOL bBulletGoToStartPos[4] = { TRUE };
 	int m_nNumOfHelpaer;
+	void BulletResetStartPos(int index);
 
 public:
 	void OnInit(LPDIRECT3DDEVICE9 d3ddevice, int life, float speed, LPD3DXMESH mesh, BOOL ISPLAYER, int NumofHelper);
@@ -76,12 +79,14 @@ public:
 	DWORD GetSpawnTime();
 	void SetBulletLife(int life, int index);
 
+
 	int GetLife();
 	float GetScale();
 	float GetSpeed();	
 	float GetRadius();
 	D3DXVECTOR3 GetPos();
 	LPD3DXMESH GetMesh();		
+	D3DXVECTOR3 GetSubObjHelperPos(int index);
 	int GetBulletLife(int index);	
 	Figure GetBulletFigure(int index);
 };

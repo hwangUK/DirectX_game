@@ -23,7 +23,7 @@ void OBJ_ACTOR::OnInit(LPDIRECT3DDEVICE9 d3ddevice, int life, float speed, LPD3D
 	if (m_bIsPlayer) {
 		for (int i = 0; i < m_nNumOfHelpaer; i++) {
 			m_Helper[i].OnInit(m_D3Ddevice);
-			m_Helper[i].InitMakeFire(0.8f, 1.0f);
+			m_Helper[i].InitMakeFire(1.0f, 1.0f);
 		}		
 	}
 }
@@ -72,25 +72,25 @@ void OBJ_ACTOR::OnRender() {
 		switch (CHECKMODEL) {
 		case DEFAULT:
 			RenderSetSubObjTransform(0, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[0].x, m_vSubObjPos[0].y, m_vSubObjPos[0].z);
-			RenderSetSubObjTransform(1, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[1].x, m_vSubObjPos[1].y, m_vSubObjPos[1].z);
-			for(int i=0; i< 2;i++) m_Helper[i].RenderFire();
+			RenderSetSubObjTransform(2, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[2].x, m_vSubObjPos[2].y, m_vSubObjPos[2].z);
+			m_Helper[0].RenderFire();
+			m_Helper[2].RenderFire();
 			break;
 		case AIR:
-			RenderSetSubObjTransform(0, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[0].x, m_vSubObjPos[0].y, m_vSubObjPos[0].z);
-			RenderSetSubObjTransform(1, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[1].x, m_vSubObjPos[1].y, m_vSubObjPos[1].z);
-		    RenderSetSubObjTransform(2, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[2].x, m_vSubObjPos[2].y, m_vSubObjPos[2].z);
-			RenderSetSubObjTransform(3, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[3].x, m_vSubObjPos[3].y, m_vSubObjPos[3].z);
-			for (int i = 0; i< m_nNumOfHelpaer; i++) m_Helper[i].RenderFire();
+			for (int i = 0; i < m_nNumOfHelpaer; i++) {
+				m_Helper[i].RenderFire();
+				RenderSetSubObjTransform(i, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[i].x, m_vSubObjPos[i].y, m_vSubObjPos[i].z);
+			}			
 			break;
 		case TIGER:
 			RenderSetSubObjTransform(0, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[0].x, m_vSubObjPos[0].y, m_vSubObjPos[0].z);
 			for (int i = 0; i< 1; i++) m_Helper[i].RenderFire();
 			break;
 		case FLY:
-			RenderSetSubObjTransform(0, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[0].x, m_vSubObjPos[0].y, m_vSubObjPos[0].z);
-			RenderSetSubObjTransform(1, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[1].x, m_vSubObjPos[1].y, m_vSubObjPos[1].z);
-			RenderSetSubObjTransform(2, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[2].x, m_vSubObjPos[2].y, m_vSubObjPos[2].z);
-			for (int i = 0; i< m_nNumOfHelpaer-1; i++) m_Helper[i].RenderFire();
+			for (int i = 0; i < m_nNumOfHelpaer - 1; i++) {
+				RenderSetSubObjTransform(i, 0.4f, 0.4f, 0.4f, m_fSubObjRotation.x, m_fSubObjRotation.y, m_fSubObjRotation.z, m_vSubObjPos[i].x, m_vSubObjPos[i].y, m_vSubObjPos[i].z);
+				m_Helper[i].RenderFire();
+			} 
 			break;
 		default:
 			break;
@@ -115,59 +115,115 @@ void OBJ_ACTOR::OnUpdate() {
 		switch (CHECKMODEL) {
 		case DEFAULT:
 			m_vSubObjPos[0] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosZ.x, m_vPos.y + m_vCycleRotationPosZ.y, m_vPos.z + m_vCycleRotationPosZ.z);
-			m_vSubObjPos[1] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosX.x, m_vPos.y + m_vCycleRotationPosX.y, m_vPos.z + m_vCycleRotationPosX.z);	
+			m_vSubObjPos[2] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosX.x, m_vPos.y + m_vCycleRotationPosX.y, m_vPos.z + m_vCycleRotationPosX.z);	
+			if (bFireOn[0] == FALSE) BulletResetStartPos(0);
+			else if (bFireOn[0] == TRUE) {
+				BulletFire(0);				
+				if (bBulletGoToStartPos[0] == TRUE) {
+					bFireOn[0] = FALSE;
+					bBulletGoToStartPos[0] = FALSE;
+				}			
+			}		
+			if (bFireOn[2] == FALSE)	BulletResetStartPos(2);
+			else if (bFireOn[2] == TRUE) {
+				BulletFire(2);
+				if (bBulletGoToStartPos[2] == TRUE) {
+					bFireOn[2] = FALSE;
+					bBulletGoToStartPos[2] = FALSE;
+				}
+			}
 			break;
-		case AIR:	
+		case AIR:
 		    m_vSubObjPos[0] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosZ.x, m_vPos.y + m_vCycleRotationPosZ.y, m_vPos.z + m_vCycleRotationPosZ.z);
 		    m_vSubObjPos[1] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosX.x, m_vPos.y + m_vCycleRotationPosX.y, m_vPos.z + m_vCycleRotationPosX.z);
-		    m_vSubObjPos[2] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosY.x, m_vPos.y + m_vCycleRotationPosY.y, m_vPos.z + m_vCycleRotationPosY.z);//m_vSubObjPos[3] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosX.x * m_vCycleRotationPosZ.x, m_vPos.y + m_vCycleRotationPosX.y * m_vCycleRotationPosZ.y, m_vPos.z + m_vCycleRotationPosX.z * m_vCycleRotationPosZ.z);
+		    m_vSubObjPos[2] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosY.x, m_vPos.y + m_vCycleRotationPosY.y, m_vPos.z + m_vCycleRotationPosY.z);
 			m_vSubObjPos[3] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosY.x+ 1.f, m_vPos.y + m_vCycleRotationPosY.y+1.f, m_vPos.z + m_vCycleRotationPosY.z+1.f);		
+			if (bFireOn[0] == FALSE)	BulletResetStartPos(0);
+			else if (bFireOn[0] == TRUE) {
+				BulletFire(0);
+				if (bBulletGoToStartPos[0] == TRUE) {
+					bFireOn[0] = FALSE;
+					bBulletGoToStartPos[0] = FALSE;
+				}
+			}
+			if (bFireOn[1] == FALSE)	BulletResetStartPos(1);
+			else if (bFireOn[1] == TRUE) {
+				BulletFire(1);
+				if (bBulletGoToStartPos[1] == TRUE) {
+					bFireOn[1] = FALSE;
+					bBulletGoToStartPos[1] = FALSE;
+				}
+			}
+			if (bFireOn[2] == FALSE)	BulletResetStartPos(2);
+			else if (bFireOn[2] == TRUE) {
+				BulletFire(2);
+				if (bBulletGoToStartPos[2] == TRUE) {
+					bFireOn[2] = FALSE;
+					bBulletGoToStartPos[2] = FALSE;
+				}
+			}
+			if (bFireOn[3] == FALSE)	BulletResetStartPos(3);
+			else if (bFireOn[3] == TRUE) {
+				BulletFire(3);
+				if (bBulletGoToStartPos[3] == TRUE) {
+					bFireOn[3] = FALSE;
+					bBulletGoToStartPos[3] = FALSE;
+				}
+			}
 			break;
 		case TIGER: 
-			m_vSubObjPos[0] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosZ.x, m_vPos.y + m_vCycleRotationPosZ.y, m_vPos.z + m_vCycleRotationPosZ.z);			
+			m_vSubObjPos[0] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosZ.x, m_vPos.y + m_vCycleRotationPosZ.y, m_vPos.z + m_vCycleRotationPosZ.z);		
+			if (bFireOn[0] == FALSE)	BulletResetStartPos(0);
+			else if (bFireOn[0] == TRUE) {
+				BulletFire(0);
+				if (bBulletGoToStartPos[0] == TRUE) {
+					bFireOn[0] = FALSE;
+					bBulletGoToStartPos[0] = FALSE;
+				}
+			}		
 			break;
 		case FLY: 
 			m_vSubObjPos[0] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosZ.x, m_vPos.y + m_vCycleRotationPosZ.y, m_vPos.z + m_vCycleRotationPosZ.z);
 			m_vSubObjPos[1] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosX.x, m_vPos.y + m_vCycleRotationPosX.y, m_vPos.z + m_vCycleRotationPosX.z);
 			m_vSubObjPos[2] = D3DXVECTOR3(m_vPos.x + m_vCycleRotationPosY.x, m_vPos.y + m_vCycleRotationPosY.y, m_vPos.z + m_vCycleRotationPosY.z);		
+			if (bFireOn[0] == FALSE)	BulletResetStartPos(0);
+			else if (bFireOn[0] == TRUE) {
+				BulletFire(0);
+				if (bBulletGoToStartPos[0] == TRUE) {
+					bFireOn[0] = FALSE;
+					bBulletGoToStartPos[0] = FALSE;
+				}
+			}			
+			if (bFireOn[1] == FALSE)	BulletResetStartPos(1);
+			else if (bFireOn[1] == TRUE) {
+				BulletFire(1);
+				if (bBulletGoToStartPos[1] == TRUE) {
+					bFireOn[1] = FALSE;
+					bBulletGoToStartPos[1] = FALSE;
+				}
+			}			
+			if (bFireOn[2] == FALSE)	BulletResetStartPos(2);
+			else if (bFireOn[2] == TRUE) {
+				BulletFire(2);
+				if (bBulletGoToStartPos[2] == TRUE) {
+					bFireOn[2] = FALSE;
+					bBulletGoToStartPos[2] = FALSE;
+				}
+			}
 			break;
 		default:
 			break;
 		}
 		//위치에서 발사
-		if (FireOn[0] == TRUE) {
-			m_Helper[0].Fire(0, 0.3f);
-			if (m_Helper[0].GetBulletPos().z > m_vSubObjPos[0].z + 35.f) FireOn[0] = FALSE;
-		}
-		else {
-			//총알을 헬퍼위치에 Update
-			m_Helper[0].SetBulletPos(m_vSubObjPos[0]);
-			SetBulletLife(1, 0);
-		}
-		if (FireOn[1] == TRUE) {
-			m_Helper[1].Fire(1, 0.3f);
-			if (m_Helper[1].GetBulletPos().x < m_vSubObjPos[1].x - 35.f) FireOn[1] = FALSE;
-		}
-		else {			
-			m_Helper[1].SetBulletPos(m_vSubObjPos[1]);
-			SetBulletLife(1, 1);
-		}
-		if (FireOn[2] == TRUE) {
-			m_Helper[2].Fire(2, 0.4f);
-			if (m_Helper[2].GetBulletPos().z > m_vSubObjPos[2].z + 35.f) FireOn[2] = FALSE;
-		}
-		else {
-			m_Helper[2].SetBulletPos(m_vSubObjPos[2]);
-			SetBulletLife(1, 2);
-		}
-		if (FireOn[3] == TRUE) {
-			m_Helper[3].Fire(3, 0.5f);
-			if (m_Helper[3].GetBulletPos().x < m_vSubObjPos[3].x - 35.f) FireOn[3] = FALSE;
-		}
-		else {
-			m_Helper[3].SetBulletPos(m_vSubObjPos[3]);
-			SetBulletLife(1, 3);
-		}
+		for (int i = 0; i < 4; i++) {
+			if (m_Helper[i].GetBulletLife() > 0) {
+				m_Helper[i].Fire(i, 0.3f);
+				if (i == 0  && m_Helper[0].GetBulletPos().z > m_vSubObjPos[0].z + 35.f) bBulletGoToStartPos[0] = TRUE;
+				else if(i == 1 && m_Helper[1].GetBulletPos().z > m_vSubObjPos[1].z + 35.f) bBulletGoToStartPos[1] = TRUE;
+				else if(i == 2 && m_Helper[2].GetBulletPos().x < m_vSubObjPos[2].x - 35.f) bBulletGoToStartPos[2] = TRUE;
+				else if(i == 3 && m_Helper[3].GetBulletPos().x < m_vSubObjPos[3].x - 35.f) bBulletGoToStartPos[3] = TRUE;
+			}
+		}		
 	}
 }
 
@@ -235,26 +291,36 @@ void OBJ_ACTOR::SetSpawnTime(DWORD time) {
 void OBJ_ACTOR::SetCycleRotationX(float Radius, float Speed, double theta) {
 	theta *= Speed;
 	m_vCycleRotationPosX.x = 0.f;
-	m_vCycleRotationPosX.y = (Radius *  cos(theta));// +(-Radius * sin(theta));
-	m_vCycleRotationPosX.z = (Radius *  sin(theta));// +(Radius * sin(theta));
+	m_vCycleRotationPosX.y = (Radius *  (float)cos(theta));// +(-Radius * sin(theta));
+	m_vCycleRotationPosX.z = (Radius *  (float)sin(theta));// +(Radius * sin(theta));
 }
 
 void OBJ_ACTOR::SetCycleRotationY(float Radius, float Speed, double theta) {
 	theta *= Speed ;
-	m_vCycleRotationPosY.x = (Radius *  cos(theta));// +(-Radius * sin(theta));
+	m_vCycleRotationPosY.x = (Radius *  (float)cos(theta));// +(-Radius * sin(theta));
 	m_vCycleRotationPosY.y = 0.f;
-	m_vCycleRotationPosY.z = (Radius *  sin(theta));// +(Radius * sin(theta));
+	m_vCycleRotationPosY.z = (Radius *  (float)sin(theta));// +(Radius * sin(theta));
 }
 
 void OBJ_ACTOR::SetCycleRotationZ(float Radius, float Speed, double theta) { 
 	theta *= Speed;
-	m_vCycleRotationPosZ.x = (Radius *  cos(theta));// +(-Radius * sin(theta));
-	m_vCycleRotationPosZ.y = (Radius *  sin(theta));// +(Radius * sin(theta));
+	m_vCycleRotationPosZ.x = (Radius *  (float)cos(theta));// +(-Radius * sin(theta));
+	m_vCycleRotationPosZ.y = (Radius *  (float)sin(theta));// +(Radius * sin(theta));
 	m_vCycleRotationPosZ.z = 0.f;
 }
 
 void OBJ_ACTOR::SetBulletLife(int life, int index) {
-	m_Helper[index].SetLife(life);
+	m_Helper[index].SetBulletLife(life);
+}
+
+void OBJ_ACTOR::BulletResetStartPos(int i)
+{
+	SetBulletLife(0, i);
+	m_Helper[i].SetBulletPos(GetSubObjHelperPos(i));
+}
+void OBJ_ACTOR::BulletFire(int i)
+{
+	SetBulletLife(1, i);
 }
 //GET -------------------------
 
@@ -289,6 +355,11 @@ Figure OBJ_ACTOR::GetBulletFigure(int index) {
 	return m_Helper[index];
 }
 
+D3DXVECTOR3 OBJ_ACTOR::GetSubObjHelperPos(int index)
+{
+	return m_vSubObjPos[index];
+}
+
 int OBJ_ACTOR::GetBulletLife(int index) {
-	return m_Helper[index].GetLife();
+	return m_Helper[index].GetBulletLife();
 }

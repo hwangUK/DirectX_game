@@ -36,7 +36,7 @@ void Game::OnInit() {
 
 	//메인 플레이어 초기화
 	m_NumofPlayerBullet = 4;
-	m_player.OnInit(m_pD3Ddevice, 10, 0.05f, m_pMesh,TRUE, m_NumofPlayerBullet);
+	m_player.OnInit(m_pD3Ddevice, 15, 0.05f, m_pMesh,TRUE, m_NumofPlayerBullet);
 	m_player.SetScale(1.0f);
 	
 	m_vStartPos = m_player.GetPos();	
@@ -47,37 +47,37 @@ void Game::OnInit() {
 	DWORD spawntimeR = 3333;
 	DWORD spawntimeU = 3333;
 	DWORD spawntimeD = 1000;
-	for (int i = 0; i < 1000; i++) {
+	for (int i = 0; i < 600; i++) {
 		m_Target_VerticalLEFT[i].OnInit(m_pD3Ddevice, 0, 0.013f, m_pMesh, FALSE,0);
 		m_Target_VerticalRIGHT[i].OnInit(m_pD3Ddevice, 0, 0.017f, m_pMesh, FALSE,0);
 		m_Target_HorizontalUP[i].OnInit(m_pD3Ddevice, 0, 0.008f, m_pMesh, FALSE,0);
 		m_Target_HorizontalDOWN[i].OnInit(m_pD3Ddevice, 0, 0.008f, m_pMesh, FALSE,0);
 	}
-	for (int i = 0; i < 1000; i++) {
+	for (int i = 0; i < 600; i++) {
 		m_Target_VerticalLEFT[i].SetTransform(m_vStartPos.x - 2, 0.0f, 20.0f);
-		m_Target_VerticalLEFT[i].SetScale(1.5f);
+		m_Target_VerticalLEFT[i].SetScale(1.0f);
 		if (i < 200)spawntimeL += 1000;
 		else spawntimeL += 877;
 		m_Target_VerticalLEFT[i].SetSpawnTime(spawntimeL);
 	}
-	for (int i = 0; i < 1000; i++) {
+	for (int i = 0; i < 600; i++) {
 		m_Target_VerticalRIGHT[i].SetTransform(m_vStartPos.x + 2, 0.0f, 20.0f);
-		m_Target_VerticalRIGHT[i].SetScale(1.5f);
+		m_Target_VerticalRIGHT[i].SetScale(1.0f);
 		if (i < 5)spawntimeR += 5667;
 		else if (i > 5 && i < 15)spawntimeR += 20;
 		else spawntimeR += 1837;
 		m_Target_VerticalRIGHT[i].SetSpawnTime(spawntimeR);
 	}
-	for (int i = 0; i < 1000; i++) {
+	for (int i = 0; i < 600; i++) {
 		m_Target_HorizontalUP[i].SetTransform(-20.0f, 0.0f, m_vStartPos.z + 2);
-		m_Target_HorizontalUP[i].SetScale(1.5f);
+		m_Target_HorizontalUP[i].SetScale(1.0f);
 		if (i < 80)spawntimeU += 1132;
 		else spawntimeU += 3333;
 		m_Target_HorizontalUP[i].SetSpawnTime(spawntimeU);
 	}
-	for (int i = 0; i < 1000; i++) {
+	for (int i = 0; i < 600; i++) {
 		m_Target_HorizontalDOWN[i].SetTransform(-20.0f, 0.0f, m_vStartPos.z - 2);
-		m_Target_HorizontalDOWN[i].SetScale(1.5f);
+		m_Target_HorizontalDOWN[i].SetScale(1.0f);
 		if (i < 42)spawntimeD += 2351;
 		else spawntimeD += 1132;
 		m_Target_HorizontalDOWN[i].SetSpawnTime(spawntimeD);
@@ -135,7 +135,7 @@ void Game::SceneSet()
 		
 		m_CUBE.SetMatrixTranslate(0.0f, 0.0f, 0.0f);
 		m_CUBE.SetMatrixScale(1.0f, 1.0f, 1.0f);
-
+		for (int i = 0; i< 4; i++) m_player.BulletResetStartPos(i);
 		m_Timer.ReSetTimer();
 	}
 	break;
@@ -153,7 +153,7 @@ void Game::SceneSet()
 	case GAME_SONG1: {
 
 		m_Timer.ReSetTimer();
-		m_player.SetLife(10);
+		m_player.SetLife(15);
 		m_Camera.SetCameraPos(-13.f, 75.f, -15.f);
 		m_Camera.SetTargetPos(8.f, 0.f, -10.f);
 		m_Camera.SetViewUp(0.f, 1.f, 0.f);
@@ -162,31 +162,32 @@ void Game::SceneSet()
 		m_player.SetTransform(15.0f, 0.0f, -15.0f);
 		m_player.InitModelLoad(m_player.CHECKMODEL);
 		m_vStartPos = m_player.GetPos();
-
+		
 		ShowWindow(m_hMenuwnd, SW_HIDE);
 
 		m_sprite01.SetScale(8.f, 8.f, 8.f);
-
 		sound.PlaySoundBG(0);
 		
 		m_CUBE.SetMatrixTranslate(15.0f, 0.0f, -15.5f);
 		m_CUBE.SetMatrixScale(1.0f, 1.0f, 1.0f);
 		//타겟 구슬 객체 리스폰 인덱스 / 위치 세팅
-		for (int i = 0; i < 4; i++) m_TargetIndex[i] = i;
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 4; i++) m_TargetIndex[i] = 0;
+		for (int i = 0; i < 600; i++) {
 			m_Target_VerticalLEFT[i].SetTransform(m_vStartPos.x - 2, 0.0f, 20.0f);
 			m_Target_VerticalRIGHT[i].SetTransform(m_vStartPos.x + 2, 0.0f, 20.0f);
 			m_Target_HorizontalUP[i].SetTransform(-20.0f, 0.0f, m_vStartPos.z + 2);
 			m_Target_HorizontalDOWN[i].SetTransform(-20.0f, 0.0f, m_vStartPos.z - 2);
 		}
 		//재시작시 다시 0으로 만들어야함  [시간순서대로 살리기 위해]
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 600; i++) {
 			m_Target_VerticalLEFT[i].SetLife(0);
 			m_Target_VerticalRIGHT[i].SetLife(0);
 			m_Target_HorizontalUP[i].SetLife(0);
 			m_Target_HorizontalDOWN[i].SetLife(0);
 		}
+		for (int i = 0; i < m_NumofPlayerBullet; i++) m_player.bFireOn[i] = FALSE;
 		//--------------------		
+		for(int i=0; i< 4;i++) m_player.BulletResetStartPos(i);
 		m_Timer.ReSetTimer();
 	}
 		break;
@@ -240,37 +241,37 @@ void Game::OnRender() {
 		SetDrawingText(3, TEXT("LOADING...."), D3DXCOLOR(1.0f, 0.0f, 1.0f, 1.0f), 50, 50, 0, 0);
 		break;
 	case GAME_SONG1: {
-		 m_CUBE.OnRender();
-	     m_sprite01.OnRender(); 
-		 m_nFPSCount++;	
-		 if (m_player.GetLife() > 0)  m_player.OnRender();
-		 else {
-			 m_gameSceneState = GAMEOVER_FAIL;
-			 SceneSet();
-		 }
-		for(int i = 0; i < 1000; i++) {
+		m_CUBE.OnRender();
+		m_sprite01.OnRender();
+		m_nFPSCount++;
+		if (m_player.GetLife() > 0)  m_player.OnRender();
+		else {
+			m_gameSceneState = GAMEOVER_FAIL;
+			SceneSet();
+		}
+		for (int i = 0; i < 600; i++) {
 			if (m_Target_VerticalLEFT[i].GetLife() > 0) {
 				SetMaterial(1.0f, 0.0f, 0.0f);
 				m_Target_VerticalLEFT[i].OnRender();
-			}				
+			}
 			if (m_Target_VerticalRIGHT[i].GetLife() > 0) {
 				SetMaterial(1.0f, 1.0f, 0.0f);
 				m_Target_VerticalRIGHT[i].OnRender();
-			} 
+			}
 			if (m_Target_HorizontalUP[i].GetLife() > 0) {
 				SetMaterial(0.8f, 0.3f, 0.1f);
 				m_Target_HorizontalUP[i].OnRender();
-			} 
+			}
 			if (m_Target_HorizontalDOWN[i].GetLife() > 0) {
 				SetMaterial(0.0f, 0.8f, 0.4f);
 				m_Target_HorizontalDOWN[i].OnRender();
-			} 
+			}
 		}
-		wchar_t str_FPS[100];
-		wchar_t str_Timer[100];
-		wchar_t str_Life[100];
-		wchar_t wchar_fpos[100];
-		char char_fpos[100];		
+		wchar_t str_FPS[30];
+		wchar_t str_Timer[30];
+		wchar_t str_Life[30];
+		wchar_t wchar_fpos[30];
+		char char_fpos[30];		
 		size_t size;
 
 		wsprintfW(str_FPS, TEXT("FPS : %d"), m_nFPS);
@@ -282,11 +283,11 @@ void Game::OnRender() {
 		//float값을 받아오기위해 LPWSTR을 변환
 		sprintf_s(char_fpos, "%f %f.%f", m_player.GetPos().x, m_player.GetPos().y, m_player.GetPos().z);
 		mbstowcs_s(&size, wchar_fpos, char_fpos, strlen(char_fpos)+1);
-		SetDrawingText(1, wchar_fpos, D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f), 10, 40, 0, 0);		
+		SetDrawingText(1, wchar_fpos, D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f), 10, 40, 0, 0);				
 	}		
 		break;
 	case GAMEOVER_CLEAR:
-		SetDrawingText(3, TEXT("STAGE CLEAR"), D3DXCOLOR(1.0f, 0.0f, 1.0f, 1.0f), 50, 50, 0, 0);
+		SetDrawingText(4, TEXT("STAGE CLEAR"), D3DXCOLOR(0.8f, 0.5f, 0.3f, 1.0f), 300, 300, 0, 0);
 		break;
 	case GAMEOVER_FAIL:
 		SetDrawingText(3, TEXT("MISSION FAIL"), D3DXCOLOR(1.0f, 0.0f, 1.0f, 1.0f), 50, 50, 0, 0);
@@ -320,7 +321,6 @@ void Game::OnUpdate() {
 			SceneSet();
 		}
 		break;
-
 	case LOADING_SELECT_CUSTOM:
 		m_gameSceneState = SELECT_CUSTOM;
 		SceneSet();
@@ -361,10 +361,10 @@ void Game::OnUpdate() {
 		SceneSet();
 		break;
 	case GAME_SONG1:
-	 {
+	{
 		m_Timer.StartTimer();
-		static DWORD dwAccumulateTime = 0;		
-		dwAccumulateTime += m_Timer.GetElapsedTimer();		
+		static DWORD dwAccumulateTime = 0;
+		dwAccumulateTime += m_Timer.GetElapsedTimer();
 		if (dwAccumulateTime >= 1000) {
 			dwAccumulateTime = 0;
 			m_nFPS = m_nFPSCount;
@@ -375,14 +375,14 @@ void Game::OnUpdate() {
 		m_player.OnUpdate();
 		m_CUBE.SetMatrixRotate(m_player.GetPos().x, m_player.GetPos().x, m_player.GetPos().z);
 
-		if (m_Timer.GetTimer() > 180000) {
+		if (m_Timer.GetTimer() > 183000) {
 			m_gameSceneState = GAMEOVER_CLEAR;
 			SceneSet();
 		}
 		// CAMERA ZOOM IN		
 		m_Camera.ZoomFunc(m_Timer.GetTimer(), m_m_CamZoomSectionCount, m_CamZoomSection);
-	
-		for (int i = 0; i < 1000; i++) {
+
+		for (int i = 0; i < 600; i++) {
 			m_Target_VerticalLEFT[i].OnUpdate();
 			m_Target_VerticalRIGHT[i].OnUpdate();
 			m_Target_HorizontalUP[i].OnUpdate();
@@ -390,7 +390,7 @@ void Game::OnUpdate() {
 		}
 
 		//살면 움직여라 moving when live
-		for (int k = 0; k < 1000; k++) {
+		for (int k = 0; k < 600; k++) {
 			if (m_Target_VerticalLEFT[k].GetLife() > 0) m_Target_VerticalLEFT[k].SetTransform(m_Target_VerticalLEFT[k].GetPos().x, m_Target_VerticalLEFT[k].GetPos().y, m_Target_VerticalLEFT[k].GetPos().z - m_Timer.GetElapsedTimer() * m_Target_VerticalLEFT[k].GetSpeed());
 			if (m_Target_VerticalRIGHT[k].GetLife() > 0) m_Target_VerticalRIGHT[k].SetTransform(m_Target_VerticalRIGHT[k].GetPos().x, m_Target_VerticalRIGHT[k].GetPos().y, m_Target_VerticalRIGHT[k].GetPos().z - m_Timer.GetElapsedTimer() * m_Target_VerticalRIGHT[k].GetSpeed());
 			if (m_Target_HorizontalUP[k].GetLife() > 0) m_Target_HorizontalUP[k].SetTransform(m_Target_HorizontalUP[k].GetPos().x + m_Timer.GetElapsedTimer() * m_Target_HorizontalUP[k].GetSpeed() * 0.5f, m_Target_HorizontalUP[k].GetPos().y, m_Target_HorizontalUP[k].GetPos().z);
@@ -398,108 +398,118 @@ void Game::OnUpdate() {
 		}
 
 		//사는 경우 Case of live = respawn time is done
-		for (int j = m_TargetIndex[0]; j < 1000; j++) {
+		for (int j = m_TargetIndex[0]; j < 600; j++) {
 			if (m_Timer.GetTimer() > m_Target_VerticalLEFT[j].GetSpawnTime()) {
 				m_Target_VerticalLEFT[j].SetLife(1);
 				m_TargetIndex[0]++;
 				break;
 			}
 		}
-		for (int i = m_TargetIndex[1]; i < 1000; i++) {
+		for (int i = m_TargetIndex[1]; i < 600; i++) {
 			if (m_Timer.GetTimer() > m_Target_VerticalRIGHT[i].GetSpawnTime()) {
 				m_Target_VerticalRIGHT[i].SetLife(1);
 				m_TargetIndex[1]++;
 				break;
 			}
 		}
-		for (int j = m_TargetIndex[2]; j < 1000; j++) {
+		for (int j = m_TargetIndex[2]; j < 600; j++) {
 			if (m_Timer.GetTimer() > m_Target_HorizontalUP[j].GetSpawnTime()) {
 				m_Target_HorizontalUP[j].SetLife(1);
 				m_TargetIndex[2]++;
 				break;
 			}
 		}
-		for (int j = m_TargetIndex[3]; j < 1000; j++) {
+		for (int j = m_TargetIndex[3]; j < 600; j++) {
 			if (m_Timer.GetTimer() > m_Target_HorizontalDOWN[j].GetSpawnTime()) {
 				m_Target_HorizontalDOWN[j].SetLife(1);
 				m_TargetIndex[3]++;
 				break;
 			}
 		}
+				
 		//죽는경우	Case of die
-		for (int j = 0; j < 1000; j++)	{
+		for (int j = 0; j < 600; j++) {
 			if (CheckTrigger(m_player, m_Target_VerticalLEFT[j])) {
 				SetMaterial(1.0f, 0.0f, 0.0f);
 				m_Target_VerticalLEFT[j].SetLife(0);
+				m_Target_VerticalLEFT[j].SetTransform(m_vStartPos.x - 2, 0.0f, 20.0f);
 				//sound.PlaySoundEF(0);
 			}
 			if (CheckTrigger(m_player, m_Target_VerticalRIGHT[j])) {
 				SetMaterial(1.0f, 1.0f, 0.0f);
 				m_Target_VerticalRIGHT[j].SetLife(0);
+				m_Target_VerticalRIGHT[j].SetTransform(m_vStartPos.x + 2, 0.0f, 20.0f);				
 				//sound.PlaySoundEF(0);
 			}
 			if (CheckTrigger(m_player, m_Target_HorizontalUP[j])) {
 				SetMaterial(0.8f, 0.3f, 0.1f);
 				m_Target_HorizontalUP[j].SetLife(0);
+				m_Target_HorizontalUP[j].SetTransform(-20.0f, 0.0f, m_vStartPos.z + 2);
 				//sound.PlaySoundEF(0);
 			}
 			if (CheckTrigger(m_player, m_Target_HorizontalDOWN[j])) {
 				SetMaterial(0.0f, 0.8f, 0.4f);
 				m_Target_HorizontalDOWN[j].SetLife(0);
+				m_Target_HorizontalDOWN[j].SetTransform(-20.0f, 0.0f, m_vStartPos.z - 2);
 				//sound.PlaySoundEF(0);				
 			}
-
-			if (m_player.FireOn) {
-				for (int i = 0; i < m_NumofPlayerBullet; i++)
-				{
-					if (CheckTrigger(m_player.GetBulletFigure(i), m_Target_VerticalLEFT[j])) {
-						m_Target_VerticalLEFT[j].SetLife(0);
-						m_player.SetBulletLife(0, i);
-						m_player.FireOn[i] = FALSE;
-					}
-					if (CheckTrigger(m_player.GetBulletFigure(i), m_Target_VerticalRIGHT[j])) {
-						m_Target_VerticalRIGHT[j].SetLife(0);
-						m_player.SetBulletLife(0, 0);
-						m_player.FireOn[i] = FALSE;
-					}
-					if (CheckTrigger(m_player.GetBulletFigure(i), m_Target_HorizontalUP[j])) {
-						m_Target_HorizontalUP[j].SetLife(0);
-						m_player.SetBulletLife(0, i);
-						m_player.FireOn[i] = FALSE;
-					}
-					if (CheckTrigger(m_player.GetBulletFigure(i), m_Target_HorizontalDOWN[j])) {
-						m_Target_HorizontalDOWN[j].SetLife(0);
-						m_player.SetBulletLife(0, i);
-						m_player.FireOn[i] = FALSE;
-					}
-				}			
+			/////////////////////////////////////////////
+			//총알과 타겟의 충돌체크
+			for (int i = 0; i < 2; i++) {
+				if (CheckTrigger(m_player.GetBulletFigure(i), m_Target_VerticalLEFT[j])) {
+					m_Target_VerticalLEFT[j].SetLife(0);
+					m_Target_VerticalLEFT[j].SetTransform(m_vStartPos.x - 2, 0.0f, 20.0f);
+					m_player.bBulletGoToStartPos[i] = TRUE;
+				}
+				else if (CheckTrigger(m_player.GetBulletFigure(i), m_Target_VerticalRIGHT[j])) {
+					m_Target_VerticalRIGHT[j].SetLife(0);
+					m_Target_VerticalRIGHT[j].SetTransform(m_vStartPos.x + 2, 0.0f, 20.0f);
+					m_player.bBulletGoToStartPos[i] = TRUE;
+				}
+			}	
+			for (int i = 2; i < 4; i++) {
+				if (CheckTrigger(m_player.GetBulletFigure(i), m_Target_HorizontalUP[j])) {
+					m_Target_HorizontalUP[j].SetLife(0);
+					m_Target_HorizontalUP[j].SetTransform(-20.0f, 0.0f, m_vStartPos.z + 2);
+					m_player.bBulletGoToStartPos[i] = TRUE;
+				}
+				else if (CheckTrigger(m_player.GetBulletFigure(i), m_Target_HorizontalDOWN[j])) {
+					m_Target_HorizontalDOWN[j].SetLife(0);
+					m_Target_HorizontalDOWN[j].SetTransform(-20.0f, 0.0f, m_vStartPos.z - 2);
+					m_player.bBulletGoToStartPos[i] = TRUE;
+				}
 			}
-	
+
+			/////////////////////////////////////////////////////
 			//밖으로 벗어나는경우			
 			if (m_Target_VerticalLEFT[j].GetPos().z < -20.0f && m_Target_VerticalLEFT[j].GetLife() > 0) {
 				m_Target_VerticalLEFT[j].SetLife(0);
 				m_player.SetLife(m_player.GetLife() - 1);
-			} 
+				m_Target_VerticalLEFT[j].SetTransform(m_vStartPos.x - 2, 0.0f, 20.0f);
+			}
 			if (m_Target_VerticalRIGHT[j].GetPos().z < -20.0f && m_Target_VerticalRIGHT[j].GetLife() > 0) {
 				m_Target_VerticalRIGHT[j].SetLife(0);
 				m_player.SetLife(m_player.GetLife() - 1);
+				m_Target_VerticalRIGHT[j].SetTransform(m_vStartPos.x + 2, 0.0f, 20.0f);
 			}
 			if (m_Target_HorizontalUP[j].GetPos().x > 20.0f && m_Target_HorizontalUP[j].GetLife() > 0) {
 				m_Target_HorizontalUP[j].SetLife(0);
 				m_player.SetLife(m_player.GetLife() - 1);
+				m_Target_HorizontalUP[j].SetTransform(-20.0f, 0.0f, m_vStartPos.z + 2);
 			}
 			if (m_Target_HorizontalDOWN[j].GetPos().x > 20.0f && m_Target_HorizontalDOWN[j].GetLife() > 0) {
 				m_Target_HorizontalDOWN[j].SetLife(0);
 				m_player.SetLife(m_player.GetLife() - 1);
+				m_Target_HorizontalDOWN[j].SetTransform(-20.0f, 0.0f, m_vStartPos.z - 2);
 			}
 		}
 
 		//Key_____________________________________________________________
-	
+
 
 		if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-			if (m_player.GetPos().x > m_vStartPos.x -1.5f) 
-				m_player.SetTransform(m_player.GetPos().x - m_Timer.GetElapsedTimer()* m_player.GetSpeed(), m_player.GetPos().y, m_player.GetPos().z);							
+			if (m_player.GetPos().x > m_vStartPos.x - 1.5f)
+				m_player.SetTransform(m_player.GetPos().x - m_Timer.GetElapsedTimer()* m_player.GetSpeed(), m_player.GetPos().y, m_player.GetPos().z);
 		}
 
 		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
@@ -513,32 +523,34 @@ void Game::OnUpdate() {
 		}
 
 		if (GetAsyncKeyState(VK_DOWN)) {
-			if (m_player.GetPos().z >=  m_vStartPos.z - 1.5f)
+			if (m_player.GetPos().z >= m_vStartPos.z - 1.5f)
 				m_player.SetTransform(m_player.GetPos().x, m_player.GetPos().y, m_player.GetPos().z - m_Timer.GetElapsedTimer() * m_player.GetSpeed());
-		}	
+		}
 
-		if (GetAsyncKeyState(VK_SPACE)) {	
-			for (int i = 0; i < m_NumofPlayerBullet; i++) {
-				m_player.FireOn[i] = TRUE;
-				m_player.SetBulletLife(1, i);
+		///////////////////////////////////////////////////////////
+		if (GetAsyncKeyState(VK_SPACE)) {
+			switch (m_player.CHECKMODEL) {
+			case DEFAULT:
+				if(!m_player.bFireOn[0]) m_player.bFireOn[0] = TRUE;
+				if (!m_player.bFireOn[2]) m_player.bFireOn[2] = TRUE;
+				break;
+			case AIR:
+				if (!m_player.bFireOn[0]) m_player.bFireOn[0] = TRUE;
+				if (!m_player.bFireOn[1]) m_player.bFireOn[1] = TRUE;
+				if (!m_player.bFireOn[2]) m_player.bFireOn[2] = TRUE;
+				if (!m_player.bFireOn[3]) m_player.bFireOn[3] = TRUE;
+				break;
+			case FLY:
+				if (!m_player.bFireOn[0]) m_player.bFireOn[0] = TRUE;
+				if (!m_player.bFireOn[1]) m_player.bFireOn[1] = TRUE;
+				if (!m_player.bFireOn[2]) m_player.bFireOn[2] = TRUE;
+				break;
+			case TIGER:
+				if (!m_player.bFireOn[0]) m_player.bFireOn[0] = TRUE;
+			default:
+				break;
 			}
 		}
-
-		if (GetAsyncKeyState('D') < 0) {
-			m_Camera.SetCameraPos(m_Camera.GetCameraPos().x + 0.2f, m_Camera.GetCameraPos().y, m_Camera.GetCameraPos().z);
-			m_Camera.SetTargetPos(m_Camera.GetTargetPos().x + 0.2f, m_Camera.GetTargetPos().y, m_Camera.GetTargetPos().z);
-		}
-
-		if (GetAsyncKeyState('A') < 0) {
-			m_Camera.SetCameraPos(m_Camera.GetCameraPos().x - 0.2f, m_Camera.GetCameraPos().y, m_Camera.GetCameraPos().z);
-			m_Camera.SetTargetPos(m_Camera.GetTargetPos().x - 0.2f, m_Camera.GetTargetPos().y, m_Camera.GetTargetPos().z);
-		}
-		if (GetAsyncKeyState('W') < 0) {
-			m_Camera.SetCameraPos(m_Camera.GetCameraPos().x , m_Camera.GetCameraPos().y + 0.2f, m_Camera.GetCameraPos().z);
-		}
-		if (GetAsyncKeyState('S') < 0) {
-			m_Camera.SetCameraPos(m_Camera.GetCameraPos().x, m_Camera.GetCameraPos().y - 0.2f, m_Camera.GetCameraPos().z);
-		}	
 	}
 		break;
 
@@ -594,7 +606,7 @@ void Game:: OnRelease() {
 		m_Camera.OnRelease();
 		m_sprite01.OnRelease();
 		m_player.OnRelease();
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 600; i++) {
 			m_Target_VerticalLEFT[i].OnRelease();
 			m_Target_VerticalRIGHT[i].OnRelease();
 			m_Target_HorizontalUP[i].OnRelease();
