@@ -32,7 +32,7 @@ TCHAR *items[4] = { TEXT("DEFAULT"),TEXT("AIR"),TEXT("TIGER"),TEXT("FLY") };
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK MenuDlgProc(HWND hwnd, UINT nMsg, WPARAM wparam, LPARAM lparam);
+ INT_PTR CALLBACK MenuDlgProc(HWND hwnd, UINT nMsg, WPARAM wparam, LPARAM lparam);
 //winmain
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
